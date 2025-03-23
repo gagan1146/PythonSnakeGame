@@ -1,25 +1,16 @@
 from display import MyScreen
 from turtle import Turtle
 
-# Declare variable and CONSTANT
 LEVEL_SCORE = 3
 DISTANCE_FOR_SCORE = 60
 GAME_OVER_IMAGE = "./image/snake.png"
 FONT = ("Courier", 15, "bold")
 ALIGN = "center"
-file_score = "snake_game\score_file.txt"
+file_score = "snake_game\PythonSnakeGame\score_file.txt"
 
 
-# Class Scoreboard
 class Scoreboard(Turtle):
-    """
-    Class Scoreboard
-    Instance:
-    score, level, high_score, level_speed
-    Method:
-    increase_score, increase_level,
-    update_high_score, refresh_score
-    """
+    
     def __init__(self):
         super().__init__()
         self.score = 0
@@ -33,14 +24,8 @@ class Scoreboard(Turtle):
         self.read_scoreboard_file()
         self.refresh_score()
 
-#    def game_over(self):
-#        self.goto(0, 0)
-#        MyScreen().this_window.bgpic(GAME_OVER_IMAGE)
-#        self.write(f"GAME OVER", align=ALIGN, font=FONT)
 
-    # Method read high score from file
     def read_scoreboard_file(self):
-        """# Method read high score from file"""
         with open(file_score, "r") as high_score_file:
             self.high_score = int(high_score_file.read())
 
@@ -53,9 +38,7 @@ class Scoreboard(Turtle):
             self.level += 1
             self.level_speed *= 0.9
 
-    # Method update high score and wtite to file
     def update_high_score(self):
-        """# Method update high score and wtite to file"""
         if self.score > self.high_score:
             self.high_score = self.score
             with open(file_score, "w") as high_score_file:
